@@ -2,6 +2,7 @@ package ru.gb.springdemo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.gb.springdemo.DTO.IssueDTO;
 import ru.gb.springdemo.api.IssueRequest;
 import ru.gb.springdemo.demo.MyBean;
 import ru.gb.springdemo.model.Issue;
@@ -9,7 +10,10 @@ import ru.gb.springdemo.repository.BookRepository;
 import ru.gb.springdemo.repository.IssueRepository;
 import ru.gb.springdemo.repository.ReaderRepository;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -67,4 +71,20 @@ public class IssuerService {
     return issue;
   }
 
+  public List<IssueDTO> allIssuesDTO(){
+    List<Issue> issues =  issueRepository.getAllIssues();
+
+    List<IssueDTO> issuesDTO = new ArrayList<>();
+
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+    for (Issue issue: issues) {
+      issuesDTO.add(new IssueDTO(bookRepository.getBookById(issue.getId()).getName(),
+              readerRepository.getReaderById(issue.getReaderId()).getName(),
+              dtf.format(issue.getIssued_at()),
+              issue.getReturned_at() == null ? "": dtf.format(issue.getReturned_at())));
+    }
+
+    return issuesDTO;
+  }
 }

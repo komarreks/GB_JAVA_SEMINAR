@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Карта читателя</title>
+</head>
+<body>
+    <h1>Читатель: <span th:text="${reader}"></span></h1>
+    <h2>Книги на руках:</h2>
+    <table>
+      <tr>
+        <th>НАЗВАНИЕ</th>
+      </tr>
+      <tr th:each="book: ${books}">
+          <th th:text="${book.name}"></th>
+      </tr>
+    </table>
+</body>
+</html>

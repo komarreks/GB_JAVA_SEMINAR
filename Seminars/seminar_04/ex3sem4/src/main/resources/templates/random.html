@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Random page</title>
+</head>
+<body>
+    <h1>Случайное число в диапазоне</h1>
+    <h2>от <span th:text="${min}"></span> до <span th:text="${max}"></span></h2>
+    <p th:text="${random}"></p>
+
+    <h2>Значения по умолчанию</h2>
+    <p>Минимум: <span th:text="${min_def}"></span> Максимум: <span th:text="${max_def}"></span></p>
+</body>
+</html>
