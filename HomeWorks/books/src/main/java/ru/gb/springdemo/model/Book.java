@@ -1,19 +1,24 @@
 package ru.gb.springdemo.model;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
 
-@Data
-@RequiredArgsConstructor
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
 public class Book {
 
-  public static long sequence = 1L;
-
-  private final long id;
-  private final String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  private String name;
 
   public Book(String name) {
-    this(sequence++, name);
+    this.name = name;
   }
 
 }

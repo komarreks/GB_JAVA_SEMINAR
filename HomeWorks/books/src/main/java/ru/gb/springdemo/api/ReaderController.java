@@ -43,6 +43,6 @@ public class ReaderController {
 
     @GetMapping("/{id}/issue")
     public ResponseEntity<List<Issue>> getAllIssues(@PathVariable long id){
-        return ResponseEntity.status(HttpStatus.OK).body(readerService.getAllIssues(id));
+        return ResponseEntity.status(HttpStatus.OK).body(readerService.getAllIssues(readerService.getReaderById(id)));
     }
 }

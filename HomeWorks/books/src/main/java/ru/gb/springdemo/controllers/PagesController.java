@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.gb.springdemo.model.Reader;
 import ru.gb.springdemo.service.BookService;
 import ru.gb.springdemo.service.IssuerService;
 import ru.gb.springdemo.service.ReaderService;
@@ -46,7 +45,7 @@ public class PagesController {
     @GetMapping("/reader/{id}")
     public String allBooksOfReader(@PathVariable long id, Model md){
         md.addAttribute("reader", readerService.getReaderById(id).getName());
-        md.addAttribute("books", readerService.allBooksOnHands(id));
+        md.addAttribute("books", readerService.allBooksOnHands(readerService.getReaderById(id)));
 
         return "reader";
     }

@@ -1,2 +1,10 @@
 application:
   max-allowed-books: 15
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/library
+    username: puser
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
