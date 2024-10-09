@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 
 @Slf4j
 @RestController
-@RequestMapping("/issue")
+@RequestMapping("api/issue")
 public class IssuerController {
 
   @Autowired

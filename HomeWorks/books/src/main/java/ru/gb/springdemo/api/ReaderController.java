@@ -12,7 +12,7 @@ import ru.gb.springdemo.service.ReaderService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reader")
+@RequestMapping("api/reader")
 public class ReaderController {
 
     @Autowired
